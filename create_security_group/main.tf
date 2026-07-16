@@ -30,15 +30,18 @@ resource "aws_security_group" "custom_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   # Outbound Rule: Allow all traffic
-  egress = {
-    description = "Allow all outbound traffic"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1" # Semantically equivalent to all protocols
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
+  egress = [
+    {
+      description = "Allow all outbound traffic"
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1" # Semantically equivalent to all protocols
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  ]
+  
   tags = {
     Name = "my-default-vpc-sg"
   }
+
 }
